@@ -13,7 +13,7 @@ print("📊 Connecting to PostgreSQL Database...")
 try:
     # 2. Open the Database Vault
     conn = psycopg2.connect(
-        host="localhost",
+        host="host.docker.internal",
         database="market_db",
         user="postgres",
         password=os.getenv("DB_PASSWORD"),
