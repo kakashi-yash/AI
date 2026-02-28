@@ -14,8 +14,8 @@ This project demonstrates core **ETL (Extract, Transform, Load)** principles and
 ## 🚀 Core Features
 1. **Autonomous Data Extraction:** Utilizes a `while` loop and API integration to fetch live market prices at programmed intervals without manual intervention.
 2. **Data Transformation:** Standardizes raw API data and merges it with local system timestamps for accurate time-series tracking.
-3. **Local Database Loading:** Safely appends data to a lightweight `.csv` database (`market_data.csv`) using secure read/write file handling.
-4. **Session Analytics Engine:** Includes an analytical script (`analyze_data.py`) that parses the local database to calculate the highest, lowest, and total volume of recorded ticks during a given session.
+3. **Enterprise Database Integration:** Upgraded from local CSV storage to a robust **PostgreSQL** relational database for secure, scalable time-series data storage.
+4. **Secure Credential Management:** Implemented `python-dotenv` to securely manage database passwords and API keys outside of the source code.
 
 ## ⚙️ How to Run the Pipeline
 **1. Install Dependencies**
