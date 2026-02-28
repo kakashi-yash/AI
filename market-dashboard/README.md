@@ -1,6 +1,7 @@
 # 📊 Market Data Visualizer (React + Vite)
 
 ## 📌 Overview
+Live Dashboard: https://ai-nu-olive.vercel.app/
 This is the frontend user interface for my automated Intraday Market Data Pipeline. Built with React and Vite, this dashboard connects to a custom Python/Flask backend to fetch and visualize live stock market data in real-time.
 
 ## 🛠️ Tech Stack
