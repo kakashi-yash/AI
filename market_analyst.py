@@ -11,15 +11,11 @@ print("🤖 AI Analyst booting up...")
 print("📊 Connecting to PostgreSQL Database...")
 
 try:
-    # 2. Open the Database Vault
-    conn = psycopg2.connect(
-        host="host.docker.internal",
-        database="market_db",
-        user="postgres",
-        password=os.getenv("DB_PASSWORD"),
-        port="5432"
-    )
+
+    # 2. Open the Cloud Database Vault
+    conn = psycopg2.connect(os.getenv("DATABASE_URL"))
     cursor = conn.cursor()
+    
     
     cursor.execute("SELECT trade_time, price FROM intraday_prices ORDER BY trade_time ASC;")
     rows = cursor.fetchall()

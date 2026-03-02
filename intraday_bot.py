@@ -8,11 +8,8 @@ import time
 
 # --- DATABASE SETTINGS ---
 
-DB_HOST = "localhost"
-DB_NAME = "market_db"
-DB_USER = "postgres"
-DB_PASS = os.getenv("DB_PASSWORD") 
-DB_PORT = "5432"
+# Open the Cloud Database Vault
+conn = psycopg2.connect(os.getenv("DATABASE_URL"))
 
 ticker_symbol = "RELIANCE.NS"
 print(f"Starting Enterprise Pipeline for {ticker_symbol}...")
@@ -35,20 +32,14 @@ while True:
 
             # 3. LOAD (The PostgreSQL Connection)
             # Open the vault door
-            conn = psycopg2.connect(
-                host=DB_HOST,
-                database=DB_NAME,
-                user=DB_USER,
-                password=DB_PASS,
-                port=DB_PORT
-            )
+            conn = psycopg2.connect(os.getenv("DATABASE_URL"))
             
             # Create a "cursor" (the digital worker that executes the SQL)
             cursor = conn.cursor()
             
             # Write the SQL command to insert the data
             insert_query = """
-                INSERT INTO intraday_prices (trade_time, ticker, price)
+                INSERT INTO intraday_prices (trade_time, stock_symbol, price)
                 VALUES (%s, %s, %s);
             """
             
