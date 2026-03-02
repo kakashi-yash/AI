@@ -23,17 +23,11 @@ def get_market_data():
     
     try:
         # 1. Open the vault door to PostgreSQL
-        conn = psycopg2.connect(
-            host=DB_HOST,
-            database=DB_NAME,
-            user=DB_USER,
-            password=DB_PASS,
-            port=DB_PORT
-        )
+        conn = psycopg2.connect(os.getenv("DATABASE_URL"))
         cursor = conn.cursor()
         
         # 2. Fetch the data (ASC ensures the oldest is on the left, newest on the right of the chart)
-        cursor.execute("SELECT trade_time, ticker, price FROM intraday_prices ORDER BY trade_time ASC;")
+        cursor.execute("SELECT trade_time, stock_symbol, price FROM intraday_prices ORDER BY trade_time ASC;")
         rows = cursor.fetchall()
         
         # 3. Format the data into digital boxes (JSON) for React
