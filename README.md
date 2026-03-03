@@ -1,40 +1,60 @@
-# 📈 Automated Intraday Market Data Pipeline (ETL)
+# 📈 AI-Powered Intraday Data Pipeline
 
-## 📌 Overview
-This project is an automated, end-to-end Data Engineering pipeline built in Python. It is designed to autonomously extract live stock market data, transform the data with precise timestamps, and load it into a local CSV database for real-time session analysis. 
+![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Supabase-336791?logo=postgresql)
+![React](https://img.shields.io/badge/React-Vite-61DAFB?logo=react)
+![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?logo=docker)
+![Render](https://img.shields.io/badge/Render-Deployed-000000?logo=render)
+![Vercel](https://img.shields.io/badge/Vercel-Deployed-000000?logo=vercel)
 
-This project demonstrates core **ETL (Extract, Transform, Load)** principles and serves as a foundational architecture for algorithmic trading bots and future GenAI data integrations.
+## 🚀 Overview
+An end-to-end, fault-tolerant ETL (Extract, Transform, Load) pipeline and real-time analytical dashboard designed to track intraday financial market data. 
 
-## 🛠️ Tech Stack & Tools
-* **Language:** Python 3.14
-* **Libraries:** `yfinance`, `csv`, `datetime`, `time`
-* **Architecture:** ETL Data Pipeline
-* **Target Data:** Indian Stock Market (NSE/BSE) via Yahoo Finance API
+This full-stack SaaS application autonomously streams live stock prices into a managed cloud database, serves the data via a production-ready REST API, and utilizes an AI-driven microservice to generate executive market summaries with built-in algorithmic fallbacks.
 
-## 🚀 Core Features
-1. **Autonomous Data Extraction:** Utilizes a `while` loop and API integration to fetch live market prices at programmed intervals without manual intervention.
-2. **Data Transformation:** Standardizes raw API data and merges it with local system timestamps for accurate time-series tracking.
-3. **Enterprise Database Integration:** Upgraded from local CSV storage to a robust **PostgreSQL** relational database for secure, scalable time-series data storage.
-4. **Secure Credential Management:** Implemented `python-dotenv` to securely manage database passwords and API keys outside of the source code.
-
-## ⚙️ How to Run the Pipeline
-**1. Install Dependencies**
-Ensure Python is installed, then install the required Yahoo Finance library:
-`pip install yfinance`
-
-**2. Start the Bot**
-Run the data extraction script to begin building your database:
-`python intraday_bot.py`
-*(The bot will fetch and log the target stock price every 60 seconds. Press `Ctrl+C` in the terminal to stop).*
-
-**3. Analyze the Data**
-Once you have collected data, run the analysis script to generate a session summary:
-`python analyze_data.py`
-
-## 🔮 Future Scope
-* Integrate **PostgreSQL** to replace the local CSV database for enterprise-grade data storage.
-* Implement **Retrieval-Augmented Generation (RAG)** using local LLMs to provide automated, AI-driven summaries of the market session.
-* Build a full-stack **React.js / Node.js** dashboard to visualize the real-time data flow.
+**🔗 Live Demo:** [Insert your Vercel Link Here]
+**🔗 Production API:** [Insert your Render Link Here]/api/data
 
 ---
-*Author: Yashvardhan* | *Focus: Data Engineering & AI Infrastructure*
+
+## 🏗️ System Architecture
+
+
+
+1. **Extraction Node:** A Python worker (`intraday_bot.py`) scraping live stock metrics and streaming them to the cloud.
+2. **Cloud Vault (Database):** A managed PostgreSQL instance hosted on AWS via Supabase, utilizing IPv4 connection pooling.
+3. **AI Microservice:** A Docker-containerized analytics engine utilizing the Google GenAI SDK (Gemini) to evaluate market trends.
+4. **Backend API:** A Flask RESTful API served by Gunicorn with CORS enabled, deployed globally on Render.
+5. **Frontend Dashboard:** A responsive React.js interface visualizing time-series data using Recharts, deployed on Vercel.
+
+---
+
+## ✨ Key Engineering Features
+* **Fault-Tolerant AI Engine:** Designed with high availability in mind. If the external LLM API drops or rate-limits, the system seamlessly boots a local algorithmic fallback to calculate standard deviation and statistical price momentum without crashing.
+* **Infrastructure as Code (IaC):** Analytical microservice is fully containerized using Docker (`Dockerfile`), ensuring consistent, cross-platform execution environments.
+* **Enterprise Security:** Strict credential management utilizing `.env` files and environment variables; no hardcoded API keys or database URIs.
+* **CI/CD Integration:** Automated deployment pipelines linked directly to GitHub. Pushing to the `main` branch triggers zero-downtime builds on both Vercel and Render.
+
+---
+
+## 🛠️ Technology Stack
+
+| Category | Technologies |
+|---|---|
+| **Data Engineering** | Python, `yfinance`, `psycopg2`, ETL pipelines |
+| **Database** | PostgreSQL, Supabase, Connection Pooling (IPv4) |
+| **Backend API** | Flask, Gunicorn, `flask-cors` |
+| **Frontend** | React.js, Vite, Recharts, HTML/CSS |
+| **AI / ML** | Google GenAI SDK (Gemini 1.5) |
+| **DevOps & Cloud** | Docker, Render, Vercel, Git/GitHub |
+
+---
+
+## 💻 Local Setup & Installation
+
+If you wish to run this pipeline on your local machine, follow these steps:
+
+### 1. Clone the Repository
+```bash
+git clone [https://github.com/kakashi-yash/](https://github.com/kakashi-yash/)AI.git
+cd [AI]
